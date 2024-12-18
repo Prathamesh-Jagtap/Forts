@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forts</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-title">Forts</div>
+    <div class="navbar-user">
+        <div class="dropdown">
+            <button class="dropbtn" id="forts-btn">Chhatrapati Shivaji Maharaj Forts</button>
+            <div class="dropdown-content" id="fort-list">
+            </div>
+        </div>
+        <a href="/signin" class="cancel-link">
+            <button id="logout-btn">Logout</button></a>
+    </div>
+</nav>
+
+<div class="content">
+    <div id="fort-details" class="fort-details"></div>
+</div>
+
+<script>
+    const forts = [
+        {
+            name: "Raigad Fort",
+            image: "https://static.toiimg.com/photo/65783090/raiga2ed.jpg?width=748&resize=4",
+            description: "<p>Raigad Fort served as the capital of the Maratha Empire under Shivaji Maharaj's reign. It is situated in the Sahyadri mountain range of Maharashtra, India, at an elevation of 1,350 meters (4,430 ft) above sea level. The fort is known for its strategic location and impressive architecture. It also houses the tomb of Shivaji Maharaj.</p><p>The fort has a large complex with a variety of structures, including palaces, temples, and gateways. The fort is accessible by a ropeway, which offers stunning views of the surrounding landscape. Raigad Fort remains one of the most prominent symbols of Maratha power and history, attracting many visitors and trekkers who wish to explore its grandeur and significance.</p>"
+        },
+        {
+            name: "Sindhudurg Fort",
+            image: "https://th.bing.com/th/id/R.31919a61537ac6fdb5c68ee8c273c93f?rik=r44dwaly%2fFKaRA&riu=http%3a%2f%2fkonkancrown.com%2fwp-content%2fuploads%2f2023%2f02%2fSindhu-durg-fort-1.jpg&ehk=o8n%2fqJVrsrMr5s6hEkfsKebMby2bcnmzzhmOsCqOn3o%3d&risl=&pid=ImgRaw&r=0",
+            description: "<p>Sindhudurg Fort is located on an island in the Arabian Sea, off the coast of Malvan, Maharashtra. It was built by Shivaji Maharaj in the 1660s to protect his kingdom from foreign invasion. The fort is known for its sturdy construction, which withstood several attacks over the years. The fort is surrounded by beautiful coastal landscapes, making it an iconic landmark for visitors.</p><p>The fort covers an area of 48 acres and has strong walls made from a combination of limestone, jaggery, and wooden planks. It features several temples and watchtowers, adding to its grandeur. Sindhudurg Fort is famous for its rich historical significance and its beautiful surroundings, making it a popular tourist destination today. The fort remains a testament to Shivaji Maharaj's foresight in military strategy and fortifications.</p>"
+        },
+        {
+            name: "Pratapgad Fort",
+            image: "https://th.bing.com/th/id/OIP.NOhKD8riBieBqyuqS3mnFQHaEo?rs=1&pid=ImgDetMain",
+            description: "<p>Pratapgad Fort is located in the Satara district of Maharashtra. The fort is known for the historic battle fought between Shivaji Maharaj and the Bijapur Sultanate’s general, Afzal Khan. The battle took place in 1659, and Shivaji Maharaj's victory at Pratapgad marked a significant moment in the Maratha Empire's rise. The fort's strategic location made it an important military stronghold in the region.</p><p>Pratapgad is a hill fort that offers breathtaking views of the surrounding valleys and landscapes. The fort's architecture includes a majestic entrance, a large temple, and a watchtower that played a crucial role in its defense during battles. Today, it stands as a symbol of Shivaji Maharaj’s military prowess and leadership.</p>"
+        },
+        {
+            name: "Rajgad Fort",
+            image: "https://windows10spotlight.com/wp-content/uploads/2023/02/535102d2a1ed8c5790fcb0ceb785c2d8-1024x576.jpg",
+            description: "<p>Rajgad Fort, located in the Western Ghats of Maharashtra, served as the capital of the Maratha Empire for nearly 26 years, from 1645 to 1674, before Shivaji Maharaj moved to Raigad Fort. The fort is famous for its historical importance and spectacular architecture, which includes a mix of temples, gates, and water cisterns. Rajgad played a crucial role in the early years of the Maratha Empire, and it is where several important military strategies were formulated.</p><p>The fort is surrounded by steep cliffs, making it a natural fortress. Rajgad offers one of the most panoramic views in the region and is an excellent place for trekkers and history enthusiasts. The fort also holds significance as the site of numerous battles that helped shape the future of the Maratha Empire.</p>"
+        },
+        {
+            name: "Shivneri Fort",
+            image: "https://www.trawell.in/admin/images/upload/490987391Pune_Shivneri_Fort_Main.jpg",
+            description: "<p>Shivneri Fort is the birthplace of Shivaji Maharaj, located in the Pune district of Maharashtra. The fort is built on a hill and has several important historical structures, including the temple dedicated to Goddess Shivai, the fort’s namesake, and the entrance gate called 'Mochangad.' The fort's location provided a stronghold for Shivaji's early years and played an essential role in his later rise to power.</p><p>Shivneri Fort holds immense historical value as it is the place where Shivaji Maharaj spent his formative years. The fort has been well-preserved and is a popular tourist spot today, with visitors coming to witness the birthplace of one of India’s greatest warriors and rulers. It remains a tribute to his legacy.</p>"
+        },
+        {
+            name: "Torna Fort",
+            image: "https://spothunter.in/wp-content/uploads/2022/03/Torna-Fort-History.jpg",
+            description: "<p>Torna Fort, also known as Prachandagad, is located in the Pune district of Maharashtra and is one of the earliest forts captured by Shivaji Maharaj in 1643. The fort is situated at a height of 1,403 meters (4,603 ft) above sea level and offers stunning views of the surrounding hills and valleys. The fort is an important part of the early Maratha military campaigns and was strategically significant for controlling the region.</p><p>The fort is known for its steep climb and difficult trekking routes. The fort has remnants of its structures, including the main entrance, bastions, and several temples. It is one of the most popular trekking destinations in Maharashtra, drawing adventure enthusiasts and history buffs alike.</p>"
+        },
+        {
+            name: "Gingee Fort",
+            image: "https://th.bing.com/th/id/OIP.NWC42bfZtYONOoiDlRRkzAHaFj?rs=1&pid=ImgDetMain",
+            description: "<p>Gingee Fort is located in the Villupuram district of Tamil Nadu, India. The fort, also known as the 'Troy of the East,' was built by the Chola dynasty and later expanded by the Vijayanagara Empire. The fort's strategic location atop three hills makes it an ideal military stronghold. It is a massive complex, which includes several temples, palaces, and fortifications.</p><p>Gingee Fort is known for its exceptional fortifications, including massive walls, watchtowers, and impressive gates. It is one of the best-preserved forts in India and is recognized as a UNESCO World Heritage Site. The fort’s rich history and stunning architecture attract a large number of tourists each year, making it a prominent historical landmark in Tamil Nadu.</p>"
+        }
+    ];
+
+    const fortsButton = document.getElementById('forts-btn');
+    const fortListDiv = document.getElementById('fort-list');
+    const fortDetailsDiv = document.getElementById('fort-details');
+
+    fortsButton.addEventListener('click', () => {
+        const dropdownContent = document.querySelector('.dropdown-content');
+        dropdownContent.classList.toggle('show');
+        fortListDiv.innerHTML = "";
+        forts.forEach((fort, index) => {
+            const fortItem = document.createElement('a');
+            fortItem.classList.add('fort-item');
+            fortItem.textContent = fort.name;
+            fortItem.href = "#";
+            fortItem.onclick = (event) => {
+                event.preventDefault();
+                showFortDetails(index);
+                dropdownContent.classList.remove('show');
+            };
+            fortListDiv.appendChild(fortItem);
+        });
+    });
+
+    function showFortDetails(index) {
+        const fort = forts[index];
+        fortDetailsDiv.innerHTML = `
+            <h2>${fort.name}</h2>
+            <img src="${fort.image}" alt="${fort.name}" class="fort-image">
+            ${fort.description}
+        `;
+    }
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+        alert("You have logged out.");
+    });
+
+</script>
+</body>
+</html>
